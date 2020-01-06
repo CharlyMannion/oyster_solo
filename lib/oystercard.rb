@@ -11,3 +11,13 @@ class Oystercard
     @balance += amount
   end
 end
+
+# to run in terminal:
+
+# ruby 'lib/oystercard.rb'
+
+# unhash:
+# p oys = Oystercard.new
+# p oys.balance
+# p oys.top_up(10)
+# p oys.balance

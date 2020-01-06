@@ -24,3 +24,10 @@ describe Oystercard do
     end
   end
 end
+
+# irb
+# require './lib/oystercard.rb'
+# oys = Oystercard.new
+# oys.balance
+# oys.top_up(10)
+# oys.balance
