@@ -1,2 +1,3 @@
 class Oystercard
-end 
+  attr_accessor :balance
+end
