@@ -1,14 +1,9 @@
 Osytercard
-
+=================
 A programme that emulates London Underground Oystercard system
 
-=================
-
-Task
------
-
 User Stories
-
+-----
 ```
 In order to use public transport
 As a customer
