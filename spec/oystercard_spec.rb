@@ -6,6 +6,8 @@ describe Oystercard do
 
   subject(:oystercard) { described_class.new }
   top_up_amount = 10
+  let(:barrier) { double :barrier }
+
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -18,6 +20,9 @@ describe Oystercard do
     it 'should have a default amount as starting balance' do
       expect(oystercard.balance).to eq(DEFAULT_BALANCE)
     end
+    it 'should not be in journey when initialized' do
+      expect(oystercard.in_journey).to eq(false)
+    end
   end
 
   describe '#top_up' do
@@ -25,6 +30,13 @@ describe Oystercard do
       new_balance = DEFAULT_BALANCE + top_up_amount
       oystercard.top_up(top_up_amount)
       expect(oystercard.balance).to eq(new_balance)
+    end
+  end
+
+  describe '#tap_in' do
+    it 'marks the card is in journey' do
+      oystercard.tap_in(barrier)
+      expect(oystercard.in_journey).to eq(true)
     end
   end
 end

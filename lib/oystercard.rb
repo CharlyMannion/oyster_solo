@@ -3,10 +3,11 @@ require_relative 'barrier'
 class Oystercard
   DEFAULT_BALANCE = 10
 
-  attr_accessor :balance
+  attr_accessor :balance, :in_journey
 
   def initialize
     @balance = DEFAULT_BALANCE
+    @in_journey = false
   end
 
   def top_up(amount)
@@ -14,6 +15,7 @@ class Oystercard
   end
 
   def tap_in(barrier)
+    @in_journey = true 
   end
 end
 
