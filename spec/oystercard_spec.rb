@@ -12,8 +12,11 @@ describe Oystercard do
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
   end
-  it 'should respond to balance' do
+  it 'should respond to tap_in' do
     expect(oystercard).to respond_to(:tap_in).with(1).arguments
+  end
+  it 'should respond to journey_history' do
+    expect(oystercard).to respond_to :journey_history
   end
 
   describe '#initalize' do

@@ -3,11 +3,12 @@ require_relative 'barrier'
 class Oystercard
   DEFAULT_BALANCE = 10
 
-  attr_accessor :balance, :in_journey
+  attr_accessor :balance, :in_journey, :journey_history
 
   def initialize
     @balance = DEFAULT_BALANCE
     @in_journey = false
+    @journey_history
   end
 
   def top_up(amount)
@@ -28,13 +29,15 @@ end
 # ruby 'lib/oystercard.rb'
 
 # unhash:
-# p oys = Oystercard.new
-# p oys.balance
-# p oys.top_up(10)
-# p oys.balance
-# p barrier1 = Barrier.new
-# p oys.in_journey
-# p oys.tap_in(barrier1)
-# p oys.in_journey
-# p oys.tap_out(barrier2)
-# p oys.in_journey
+p oys = Oystercard.new
+p oys.balance
+p oys.top_up(10)
+p oys.balance
+p barrier1 = Barrier.new
+p barrier2 = Barrier.new
+p oys.in_journey
+p oys.tap_in(barrier1)
+p oys.in_journey
+p oys.tap_out(barrier2)
+p oys.in_journey
+p oys.journey_history
