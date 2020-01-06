@@ -1,4 +1,5 @@
 require 'oystercard'
+# require 'barrier'
 
 describe Oystercard do
   DEFAULT_BALANCE = 10
@@ -8,6 +9,9 @@ describe Oystercard do
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
+  end
+  it 'should respond to balance' do
+    expect(oystercard).to respond_to(:tap_in).with(1).arguments
   end
 
   describe '#initalize' do
