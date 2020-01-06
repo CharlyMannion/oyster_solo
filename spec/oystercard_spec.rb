@@ -7,7 +7,7 @@ describe Oystercard do
   subject(:oystercard) { described_class.new }
   top_up_amount = 10
   let(:barrier) { double :barrier }
-
+  let(:barrier_two) { double :barrier }
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -37,6 +37,14 @@ describe Oystercard do
     it 'marks the card is in journey' do
       oystercard.tap_in(barrier)
       expect(oystercard.in_journey).to eq(true)
+    end
+  end
+
+  describe '#tap_out' do
+    it 'marks the card as not journey' do
+      oystercard.tap_in(barrier)
+      oystercard.tap_out(barrier_two)
+      expect(oystercard.in_journey).to eq(false)
     end
   end
 end

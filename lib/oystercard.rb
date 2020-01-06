@@ -15,7 +15,11 @@ class Oystercard
   end
 
   def tap_in(barrier)
-    @in_journey = true 
+    @in_journey = true
+  end
+
+  def tap_out(barrier)
+    @in_journey = false
   end
 end
 
@@ -29,4 +33,8 @@ end
 # p oys.top_up(10)
 # p oys.balance
 # p barrier1 = Barrier.new
+# p oys.in_journey
 # p oys.tap_in(barrier1)
+# p oys.in_journey
+# p oys.tap_out(barrier2)
+# p oys.in_journey
