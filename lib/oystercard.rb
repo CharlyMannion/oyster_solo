@@ -1,14 +1,16 @@
 require_relative 'barrier'
+require_relative 'journey_history'
+
 
 class Oystercard
   DEFAULT_BALANCE = 10
 
   attr_accessor :balance, :in_journey, :journey_history
 
-  def initialize
+  def initialize(journey_history = JourneyHistory.new)
     @balance = DEFAULT_BALANCE
     @in_journey = false
-    @journey_history
+    @journey_history = journey_history
   end
 
   def top_up(amount)

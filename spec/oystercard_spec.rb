@@ -8,6 +8,7 @@ describe Oystercard do
   top_up_amount = 10
   let(:barrier) { double :barrier }
   let(:barrier_two) { double :barrier }
+  let(:journey_history_double) { double :journey_history }
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -25,6 +26,11 @@ describe Oystercard do
     end
     it 'should not be in journey when initialized' do
       expect(oystercard.in_journey).to eq(false)
+    end
+    it 'should have an instance of journey history' do
+      allow(Oystercard).to receive(:new).and_return(journey_history_double)
+      # p oystercard.journey_history
+      # p expect(oystercard.journey_history).to eq(journey_history_double)
     end
   end
 
