@@ -71,8 +71,9 @@ Running Tests
 
 How I approached this challenge
 ---------
-* I followed a TDD approach to this challenge.
-* My first step was to write a feature tests, and watch them fail. I would then use the feature test to help me write a unit test, and watch it fail. I would read the error messages the unit test generated to help me write the code I wanted.
+* I began by reading the user stories, and made not of the nouns and verbs
+* I modelled the objects and messages based on the user stories, until I was happy that I had a sufficient understanding of the system I would build in order to begin writing code. I was careful not to spend too long on this design phase, and instead endeavoured to write code that would be easy to change so I could continue to model as the system grew
+* I followed a TDD approach to this challenge
 * I followed the Single Responsibility principle, and created separate classes and test suites
 * I used mocks in my tests to override the random behaviour to ensure consistent test behaviour
 * I ran rubocop regularly to help me improve my code.
