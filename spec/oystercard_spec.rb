@@ -50,23 +50,25 @@ describe Oystercard do
       oystercard.tap_in(barrier)
       expect(oystercard.in_journey).to eq(true)
     end
-    it 'creates a journey' do
+    it 'records the start of a current_journey' do
       oystercard.tap_in(barrier)
       p oystercard.current_journey
       # expect(oystercard.current_journey).not_to eq(nil)
       expect(oystercard.current_journey).to eq([barrier])
-      # p journey_history_double
-      # p journey_history_double.journeys
-      # expect(journey_history_double.journeys).not_to eql([])
     end
   end
 
   describe '#tap_out' do
-    it 'marks the card as not journey' do
+    it 'marks the card as not in journey' do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
       expect(oystercard.in_journey).to eq(false)
     end
+    it 'records the end of a current_journey' do
+      oystercard.tap_in(barrier)
+      oystercard.tap_out(barrier_two)
+      expect(oystercard.current_journey).to eq([barrier, barrier_two])
+    end 
   end
 end
 

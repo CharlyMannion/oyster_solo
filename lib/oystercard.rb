@@ -29,6 +29,7 @@ class Oystercard
 
   def tap_out(barrier)
     @in_journey = false
+    @current_journey << barrier
   end
 end
 
