@@ -7,8 +7,10 @@ describe Journey do
 
   describe '#initalize' do
     it 'should have an empty entry barrier' do
-      # journey.start_at(barrier1)
       expect(journey.entry_barrier).to eq(nil)
+    end
+    it 'should have an empty exit barrier' do
+      expect(journey.exit_barrier).to eq(nil)
     end
   end
 
