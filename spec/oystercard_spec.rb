@@ -52,13 +52,13 @@ describe Oystercard do
     end
     it 'records the start of a current_journey' do
       oystercard.tap_in(barrier)
-      p oystercard.current_journey
+      oystercard.current_journey
       expect(oystercard.current_journey).not_to eq(nil)
       # expect(oystercard.current_journey).to eq([barrier])
     end
     it 'creates a new journey' do
       oystercard.tap_in(barrier)
-      expect(oystercard.current_journey).to eq(journey_double)
+      expect(oystercard.current_journey).to be_a Journey
     end
   end
 
@@ -71,7 +71,7 @@ describe Oystercard do
     it 'records the end of a current_journey' do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
-      expect(oystercard.current_journey).to eq([barrier, barrier_two])
+      expect(oystercard.current_journey.complete).to be(true)
     end
   end
 end

@@ -40,19 +40,22 @@ end
 # ruby 'lib/oystercard.rb'
 
 # unhash:
-# p jhist = JourneyHistory.new
-# p oys = Oystercard.new(jhist)
-# p oys = Oystercard.new
-# p oys.journey_history
-# p oys.balance
-# p oys.top_up(10)
-# p oys.balance
-# p barrier1 = Barrier.new
-# p barrier2 = Barrier.new
-# p oys.in_journey
-# p oys.tap_in(barrier1)
-# p oys.current_journey
-# p oys.in_journey
-# p oys.tap_out(barrier2)
-# p oys.in_journey
-# p oys.journey_history
+p jhist = JourneyHistory.new
+p oys = Oystercard.new(jhist)
+p oys = Oystercard.new
+p oys.journey_history
+p oys.balance
+p oys.top_up(10)
+p oys.balance
+p barrier1 = Barrier.new
+p barrier2 = Barrier.new
+p oys.in_journey
+p oys.tap_in(barrier1)
+p "current journey after tap in below"
+p oys.current_journey
+p oys.in_journey
+p oys.tap_out(barrier2)
+p "current journey after tap out below"
+p oys.current_journey
+p oys.in_journey
+p oys.journey_history
