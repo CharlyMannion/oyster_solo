@@ -27,4 +27,15 @@ describe Journey do
       expect(journey.exit_barrier).to eq(barrier_two)
     end
   end
+
+  describe '#complete?' do
+    it 'should not be a complete journey before the exit station is set' do
+      expect(journey.complete?).to eq(false)
+    end
+  end
+  it 'should be complete if there is an entry and exit station' do
+    journey.commence_at(barrier_one)
+    journey.terminate_at(barrier_two)
+    expect(journey.complete?).to eq(true)
+  end
 end
