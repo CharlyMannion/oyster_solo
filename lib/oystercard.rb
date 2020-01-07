@@ -31,7 +31,9 @@ end
 # ruby 'lib/oystercard.rb'
 
 # unhash:
-# p oys = Oystercard.new
+p jhist = JourneyHistory.new
+p oys = Oystercard.new(jhist)
+p oys.journey_history
 # p oys.balance
 # p oys.top_up(10)
 # p oys.balance
@@ -42,4 +44,4 @@ end
 # p oys.in_journey
 # p oys.tap_out(barrier2)
 # p oys.in_journey
-# p oys.journey_history
+# ruby 'lib/oystercard.rb'
