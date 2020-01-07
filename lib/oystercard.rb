@@ -22,7 +22,6 @@ class Oystercard
 
   def tap_in(barrier)
     @in_journey = true
-    # @current_journey = [barrier]
     new_journey = @journey_class.new
     new_journey.commence_at(barrier)
     @current_journey = new_journey
@@ -31,7 +30,8 @@ class Oystercard
   def tap_out(barrier)
     @in_journey = false
     @current_journey.terminate_at(barrier)
-    # @current_journey << barrier
+    for_history = @current_journey
+    @journey_history.record(for_history)
   end
 end
 

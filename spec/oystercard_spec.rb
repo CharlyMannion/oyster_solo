@@ -3,13 +3,14 @@ require 'oystercard'
 
 describe Oystercard do
   DEFAULT_BALANCE = 10
+  top_up_amount = 10
 
   subject(:oystercard) { described_class.new }
-  top_up_amount = 10
+
   let(:barrier) { double :barrier }
   let(:barrier_two) { double :barrier }
   let(:journey_history_double) { double :journey_history, journeys: [] }
-  let(:journey_double) { double :journey, entry_barrier: :barrier }
+  let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -72,6 +73,16 @@ describe Oystercard do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
       expect(oystercard.current_journey.complete).to be(true)
+    end
+  end
+
+  describe '#completed' do
+    it 'should add a completed journey to the journey history' do
+      oystercard.tap_in(barrier)
+      oystercard.tap_out(barrier_two)
+      expect(oystercard.journey_history.journeys.first).to be_a Journey
+      # allow(oystercard).to receive(:current_journey).and_return(journey_double)
+      # expect(oystercard.journey_history.journeys.first).to eq(journey_double)
     end
   end
 end
