@@ -4,4 +4,8 @@ class JourneyHistory
   def initialize
     @journeys = []
   end
+
+  def record(journey)
+    @journeys << journey
+  end
 end
