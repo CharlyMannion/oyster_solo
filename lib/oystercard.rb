@@ -59,3 +59,9 @@ end
 # p oys.current_journey
 # p oys.in_journey
 # p oys.journey_history
+# p "second journey below"
+# p oys.tap_in(barrier2)
+# p "current journey below"
+# p oys.current_journey
+# p oys.tap_out(barrier1)
+# p oys.journey_history

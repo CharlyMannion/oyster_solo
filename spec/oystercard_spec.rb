@@ -85,6 +85,16 @@ describe Oystercard do
       # expect(oystercard.journey_history.journeys.first).to eq(journey_double)
     end
   end
+
+  describe '#journey_history' do
+    it 'should be be able to have more than one journey' do
+      oystercard.tap_in(barrier_two)
+      oystercard.tap_out(barrier_two)
+      oystercard.tap_in(barrier_two)
+      oystercard.tap_out(barrier_two)
+      expect(oystercard.journey_history.journeys.length).to be(2)
+    end
+  end
 end
 
 # irb
