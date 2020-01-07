@@ -6,7 +6,11 @@ class Journey
     @exit_barrier
   end
 
-  def start_at(barrier)
+  def commence_at(barrier)
     @entry_barrier = barrier
+  end
+
+  def terminate_at(barrier)
+    @exit_barrier = barrier
   end
 end

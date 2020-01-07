@@ -2,8 +2,8 @@ require 'journey'
 
 describe Journey do
   subject(:journey) { described_class.new }
-  let(:barrier1) { double :barrier }
-
+  let(:barrier_one) { double :barrier }
+  let(:barrier_two) { double :barrier }
 
   describe '#initalize' do
     it 'should have an empty entry barrier' do
@@ -14,10 +14,17 @@ describe Journey do
     end
   end
 
-  describe '#start_at' do
+  describe '#commence_at' do
     it 'should set the entry barrier' do
-      journey.start_at(barrier1)
-        expect(journey.entry_barrier).to eq(barrier1)
+      journey.commence_at(barrier_one)
+      expect(journey.entry_barrier).to eq(barrier_one)
+    end
+  end
+
+  describe '#terminate_at' do
+    it 'should set the exit barrier' do
+      journey.terminate_at(barrier_two)
+      expect(journey.exit_barrier).to eq(barrier_two)
     end
   end
 end
