@@ -28,11 +28,8 @@ describe Oystercard do
       expect(oystercard.in_journey).to eq(false)
     end
     it 'should have an instance of journey history' do
-      # journey_history_spy = spy('journey_history')
       oys_test = Oystercard.new(journey_history_double)
       expect(oys_test.journey_history).to eq(journey_history_double)
-      # allow(Oystercard).to receive(:new).and_return(journey_history_spy)
-      # expect(oystercard).to have_received(:new).with(journey_history_double)
     end
     it 'should have an instance JourneyHistory' do
       expect(oystercard.journey_history).to be_a JourneyHistory
