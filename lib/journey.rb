@@ -1,10 +1,10 @@
 class Journey
-  attr_accessor :entry_barrier, :exit_barrier
+  attr_accessor :entry_barrier, :exit_barrier, :complete
 
   def initialize
     @entry_barrier
     @exit_barrier
-
+    @complete = false
   end
 
   def commence_at(barrier)
@@ -13,13 +13,7 @@ class Journey
 
   def terminate_at(barrier)
     @exit_barrier = barrier
+    @complete = true
   end
 
-  def complete?
-    if @exit_barrier != nil
-      true
-    else
-      false
-    end
-  end
 end
