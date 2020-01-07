@@ -4,7 +4,7 @@ class Journey
   def initialize
     @entry_barrier
     @exit_barrier
-    @complete = false
+    @complete = complete?
   end
 
   def commence_at(barrier)
@@ -13,7 +13,16 @@ class Journey
 
   def terminate_at(barrier)
     @exit_barrier = barrier
-    @complete = true
+    complete?
+  end
+
+  private
+  def complete?
+    if @entry_barrier != nil && @exit_barrier != nil
+      @complete = true
+    else
+      @complete = false
+    end
   end
 
 end
