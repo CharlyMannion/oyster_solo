@@ -9,7 +9,7 @@ describe Oystercard do
   let(:barrier) { double :barrier }
   let(:barrier_two) { double :barrier }
   let(:journey_history_double) { double :journey_history, journeys: [] }
-  let(:journey_double) { double :journey }
+  let(:journey_double) { double :journey, entry_barrier: :barrier }
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -53,8 +53,12 @@ describe Oystercard do
     it 'records the start of a current_journey' do
       oystercard.tap_in(barrier)
       p oystercard.current_journey
-      # expect(oystercard.current_journey).not_to eq(nil)
-      expect(oystercard.current_journey).to eq([barrier])
+      expect(oystercard.current_journey).not_to eq(nil)
+      # expect(oystercard.current_journey).to eq([barrier])
+    end
+    it 'creates a new journey' do
+      oystercard.tap_in(barrier)
+      expect(oystercard.current_journey).to eq(journey_double)
     end
   end
 
@@ -68,7 +72,7 @@ describe Oystercard do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
       expect(oystercard.current_journey).to eq([barrier, barrier_two])
-    end 
+    end
   end
 end
 
