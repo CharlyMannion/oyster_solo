@@ -5,6 +5,7 @@ describe Journey do
   let(:barrier_one) { double :barrier }
   let(:barrier_two) { double :barrier }
   let(:journey_history_double) { double :journey_history }
+  # let(:oystercard) { double :oystercard, journey_history: journey_history_double, tap_in: barrier_one, tap_out: barrier_two }
 
   describe '#initalize' do
     it 'should have an empty entry barrier' do
