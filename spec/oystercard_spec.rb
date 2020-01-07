@@ -8,7 +8,8 @@ describe Oystercard do
   top_up_amount = 10
   let(:barrier) { double :barrier }
   let(:barrier_two) { double :barrier }
-  let(:journey_history_double) { double :journey_history }
+  let(:journey_history_double) { double :journey_history, journeys: [] }
+  let(:journey_double) { double :journey }
 
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
@@ -48,6 +49,15 @@ describe Oystercard do
     it 'marks the card is in journey' do
       oystercard.tap_in(barrier)
       expect(oystercard.in_journey).to eq(true)
+    end
+    it 'creates a journey' do
+      oystercard.tap_in(barrier)
+      p oystercard.current_journey
+      # expect(oystercard.current_journey).not_to eq(nil)
+      expect(oystercard.current_journey).to eq([barrier])
+      # p journey_history_double
+      # p journey_history_double.journeys
+      # expect(journey_history_double.journeys).not_to eql([])
     end
   end
 
