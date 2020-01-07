@@ -1,2 +1,7 @@
 class JourneyHistory
-end 
+  attr_accessor :journeys
+
+  def initialize
+    @journeys = []
+  end
+end
