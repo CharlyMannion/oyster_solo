@@ -34,11 +34,17 @@ class Oystercard
     @current_journey.terminate_at(barrier)
     for_history = @current_journey
     @journey_history.record(for_history)
+    # remediate_card(@current_journey.remediation)
   end
 
   def charge_fare(amount)
     @balance -= amount
   end
+
+  def remediate_card(amount)
+    @balance += amount
+  end
+
 end
 
 # to run feature tests in terminal:
@@ -49,7 +55,7 @@ end
 # p jhist = JourneyHistory.new
 # p oys = Oystercard.new(jhist)
 
-# p oys = Oystercard.new
+p oys = Oystercard.new
 
 # p oys.journey_history
 # p oys.balance
@@ -63,13 +69,10 @@ end
 # p barrier1.assign_to(dalston)
 # p barrier1.station
 # p barrier1.station.zone
-
 # p barrier2.assign_to(dalston)
-# p oys.in_journey
+# p oys.balance
 # p oys.tap_in(barrier1)
-# p "current journey after tap in below"
-# p oys.current_journey
-# p oys.in_journey
+# p oys.current_journey.remediation
 # p oys.tap_out(barrier2)
 # p oys.balance
 

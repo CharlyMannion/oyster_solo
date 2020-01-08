@@ -79,6 +79,11 @@ describe Oystercard do
     it 'records the end of a current_journey' do
       expect(oystercard.current_journey.complete).to be(true)
     end
+    it 'remediates the card based on the actual journey cost' do
+      remediation = 3
+      new_balance = DEFAULT_BALANCE - MAX_CHARGE + remediation
+      expect(oystercard.balance).to eq(new_balance)
+    end
   end
 
   describe '#completed' do
@@ -109,6 +114,16 @@ describe Oystercard do
     it 'should reduce the balance' do
       oystercard.charge_fare(MAX_CHARGE)
       new_balance = DEFAULT_BALANCE - MAX_CHARGE
+      expect(oystercard.balance).to eq(new_balance)
+    end
+  end
+
+  describe '#remediate_card' do
+    it 'should adjust the balance based on the remediation amount' do
+      oystercard.charge_fare(MAX_CHARGE)
+      remediation = 3
+      new_balance = DEFAULT_BALANCE - MAX_CHARGE + remediation
+      oystercard.remediate_card(remediation)
       expect(oystercard.balance).to eq(new_balance)
     end
   end
