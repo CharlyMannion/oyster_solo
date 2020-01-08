@@ -1,2 +1,7 @@
 class Station
-end 
+  attr_accessor :zone
+
+  def initialize
+    @zone
+  end
+end
