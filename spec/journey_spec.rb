@@ -1,6 +1,8 @@
 require 'journey'
 
 describe Journey do
+  MAX_CHARGE = 5
+
   subject(:journey) { described_class.new }
   let(:barrier_one) { double :barrier }
   let(:barrier_two) { double :barrier }
@@ -13,6 +15,9 @@ describe Journey do
     end
     it 'should have an empty exit barrier' do
       expect(journey.exit_barrier).to eq(nil)
+    end
+    it 'should have max_charge' do
+      expect(journey.max_charge).to eq(MAX_CHARGE)
     end
   end
 
@@ -36,10 +41,14 @@ describe Journey do
     end
   end
   it 'should be complete if there is an entry and exit station' do
-    journey.commence_at(barrier_one)
-    journey.terminate_at(barrier_two)
+    test_commence
+    test_terminate
     expect(journey.complete).to eq(true)
   end
+
+  # describe '#charge' do
+  #
+  # end
 
   private
   def test_commence

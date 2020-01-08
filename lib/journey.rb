@@ -1,10 +1,12 @@
 class Journey
-  attr_accessor :entry_barrier, :exit_barrier, :complete
+  attr_accessor :entry_barrier, :exit_barrier, :complete, :max_charge
+  MAX_CHARGE = 5
 
-  def initialize
+  def initialize(max_charge = MAX_CHARGE)
     @entry_barrier
     @exit_barrier
     @complete = complete?
+    @max_charge = max_charge
   end
 
   def commence_at(barrier)
