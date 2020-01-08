@@ -12,6 +12,14 @@ describe Oystercard do
   let(:journey_history_double) { double :journey_history, journeys: [] }
   let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
 
+  def test_in
+    oystercard.tap_in(barrier)
+  end
+
+  def test_out
+    oystercard.tap_out(barrier_two)
+  end
+
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
   end
@@ -48,7 +56,7 @@ describe Oystercard do
 
   describe '#tap_in' do
     before do
-      oystercard.tap_in(barrier)
+      test_in
     end
     it 'marks the card is in journey' do
       expect(oystercard.in_journey).to eq(true)
@@ -65,8 +73,8 @@ describe Oystercard do
 
   describe '#tap_out' do
     before do
-      oystercard.tap_in(barrier)
-      oystercard.tap_out(barrier_two)
+      test_in
+      test_out
     end
     it 'marks the card as not in journey' do
       expect(oystercard.in_journey).to eq(false)
@@ -78,8 +86,8 @@ describe Oystercard do
 
   describe '#completed' do
     before do
-      oystercard.tap_in(barrier)
-      oystercard.tap_out(barrier_two)
+      test_in
+      test_out
     end
     it 'should add a completed journey to the journey history' do
       expect(oystercard.journey_history.journeys.first).to be_a Journey
@@ -90,12 +98,12 @@ describe Oystercard do
 
   describe '#journey_history' do
     before do
-      oystercard.tap_in(barrier)
-      oystercard.tap_out(barrier_two)
+      test_in
+      test_out
     end
     it 'should be be able to have more than one journey' do
-      oystercard.tap_in(barrier_two)
-      oystercard.tap_out(barrier_two)
+      test_in
+      test_out
       expect(oystercard.journey_history.journeys.length).to be(2)
     end
   end
