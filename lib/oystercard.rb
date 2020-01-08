@@ -35,6 +35,10 @@ class Oystercard
     for_history = @current_journey
     @journey_history.record(for_history)
   end
+
+  def charge_fare(amount)
+    @balance -= amount
+  end
 end
 
 # to run feature tests in terminal:

@@ -104,6 +104,14 @@ describe Oystercard do
     end
   end
 
+  describe '#charge_fare' do
+    it 'should reduce the balance' do
+      oystercard.charge_fare(MAX_CHARGE)
+      new_balance = DEFAULT_BALANCE - MAX_CHARGE
+      expect(oystercard.balance).to eq(new_balance)
+    end
+  end
+
   private
   def test_in
     oystercard.tap_in(barrier)
