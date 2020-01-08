@@ -18,6 +18,9 @@ describe Journey do
     it 'should have max_charge' do
       expect(journey.max_charge).to eq(MAX_CHARGE)
     end
+    it 'should have a remediation' do
+      expect(journey).to respond_to(:remediation)
+    end
   end
 
   describe '#commence_at' do
