@@ -47,39 +47,41 @@ describe Oystercard do
   end
 
   describe '#tap_in' do
-    it 'marks the card is in journey' do
+    before do
       oystercard.tap_in(barrier)
+    end
+    it 'marks the card is in journey' do
       expect(oystercard.in_journey).to eq(true)
     end
     it 'records the start of a current_journey' do
-      oystercard.tap_in(barrier)
       oystercard.current_journey
       expect(oystercard.current_journey).not_to eq(nil)
       # expect(oystercard.current_journey).to eq([barrier])
     end
     it 'creates a new journey' do
-      oystercard.tap_in(barrier)
       expect(oystercard.current_journey).to be_a Journey
     end
   end
 
   describe '#tap_out' do
-    it 'marks the card as not in journey' do
+    before do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
+    end
+    it 'marks the card as not in journey' do
       expect(oystercard.in_journey).to eq(false)
     end
     it 'records the end of a current_journey' do
-      oystercard.tap_in(barrier)
-      oystercard.tap_out(barrier_two)
       expect(oystercard.current_journey.complete).to be(true)
     end
   end
 
   describe '#completed' do
-    it 'should add a completed journey to the journey history' do
+    before do
       oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
+    end
+    it 'should add a completed journey to the journey history' do
       expect(oystercard.journey_history.journeys.first).to be_a Journey
       # allow(oystercard).to receive(:current_journey).and_return(journey_double)
       # expect(oystercard.journey_history.journeys.first).to eq(journey_double)
@@ -87,9 +89,11 @@ describe Oystercard do
   end
 
   describe '#journey_history' do
-    it 'should be be able to have more than one journey' do
-      oystercard.tap_in(barrier_two)
+    before do
+      oystercard.tap_in(barrier)
       oystercard.tap_out(barrier_two)
+    end
+    it 'should be be able to have more than one journey' do
       oystercard.tap_in(barrier_two)
       oystercard.tap_out(barrier_two)
       expect(oystercard.journey_history.journeys.length).to be(2)
