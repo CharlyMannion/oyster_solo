@@ -27,6 +27,7 @@ class Oystercard
     new_journey = @journey_class.new
     new_journey.commence_at(barrier)
     @current_journey = new_journey
+    charge_fare(MAX_CHARGE)
   end
 
   def tap_out(barrier)

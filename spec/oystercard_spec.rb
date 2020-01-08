@@ -65,6 +65,10 @@ describe Oystercard do
     it 'creates a new journey' do
       expect(oystercard.current_journey).to be_a Journey
     end
+    it 'charges the max_charge' do
+      new_balance = DEFAULT_BALANCE - MAX_CHARGE
+      expect(oystercard.balance).to eq(new_balance)
+    end
   end
 
   describe '#tap_out' do
