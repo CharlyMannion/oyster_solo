@@ -50,15 +50,21 @@ end
 # p oys = Oystercard.new(jhist)
 
 # p oys = Oystercard.new
+
 # p oys.journey_history
 # p oys.balance
 # p oys.top_up(10)
 # p oys.balance
-# p :dalston = Station.new
+
+# p dalston = Station.new
+# p dalston.zone = 1
 # p barrier1 = Barrier.new
 # p barrier2 = Barrier.new
-# p barrier1.assign_to(:dalston)
-# p barrier2.assign_to(:dalston)
+# p barrier1.assign_to(dalston)
+# p barrier1.station
+# p barrier1.station.zone
+
+# p barrier2.assign_to(dalston)
 # p oys.in_journey
 # p oys.tap_in(barrier1)
 # p "current journey after tap in below"

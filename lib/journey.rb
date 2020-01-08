@@ -20,7 +20,8 @@ class Journey
   end
 
   def calc_charge
-    
+    return 2 if @entry_barrier.station.zone == @exit_barrier.station.zone
+    return 3
   end
 
   private

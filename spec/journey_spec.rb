@@ -3,8 +3,9 @@ require 'journey'
 describe Journey do
 
   subject(:journey) { described_class.new }
-  let(:barrier_one) { double :barrier }
-  let(:barrier_two) { double :barrier }
+  let(:barrier_one) { double :barrier, station: station_double }
+  let(:barrier_two) { double :barrier, station: station_double }
+  let(:station_double) { double :station, zone: 1 }
   let(:journey_history_double) { double :journey_history }
   # let(:oystercard) { double :oystercard, journey_history: journey_history_double, tap_in: barrier_one, tap_out: barrier_two }
 
@@ -48,14 +49,14 @@ describe Journey do
     expect(journey.complete).to eq(true)
   end
 
-  # describe '#calc_charge' do
-  #   it 'should calculate the cost of a joruney if travelling within the same zone' do
-  #     test_commence
-  #     test_terminate
-  #     same_zone_cost = 2
-  #     expect(journey.calc_charge).to eq(same_zone_cost)
-  #   end
-  # end
+  describe '#calc_charge' do
+    it 'should calculate the cost of a joruney if travelling within the same zone' do
+      test_commence
+      test_terminate
+      same_zone_cost = 2
+      expect(journey.calc_charge).to eq(same_zone_cost)
+    end
+  end
 
   private
   def test_commence
