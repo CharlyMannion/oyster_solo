@@ -15,6 +15,9 @@ describe Journey do
     it 'should have an empty exit barrier' do
       expect(journey.exit_barrier).to eq(nil)
     end
+    it 'should have max_charge' do
+      expect(journey.max_charge).to eq(MAX_CHARGE)
+    end
   end
 
   describe '#commence_at' do

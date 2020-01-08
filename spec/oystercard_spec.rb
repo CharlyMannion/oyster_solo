@@ -22,9 +22,6 @@ describe Oystercard do
   it 'should respond to journey_history' do
     expect(oystercard).to respond_to :journey_history
   end
-  it 'should have max_charge' do
-    expect(oystercard.max_charge).to eq(MAX_CHARGE)
-  end
 
   describe '#initalize' do
     it 'should have a default amount as starting balance' do

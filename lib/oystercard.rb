@@ -9,13 +9,12 @@ class Oystercard
 
   attr_accessor :balance, :in_journey, :journey_history, :current_journey, :max_charge
 
-  def initialize(journey_history = JourneyHistory.new, journey_class = Journey, max_charge = MAX_CHARGE)
+  def initialize(journey_history = JourneyHistory.new, journey_class = Journey)
     @balance = DEFAULT_BALANCE
     @in_journey = false
     @journey_history = journey_history
     @journey_class = journey_class
     @current_journey
-    @max_charge = max_charge
   end
 
   def top_up(amount)
@@ -27,7 +26,7 @@ class Oystercard
     new_journey = @journey_class.new
     new_journey.commence_at(barrier)
     @current_journey = new_journey
-    charge_fare(MAX_CHARGE)
+    charge_fare(@current_journey.max_charge)
   end
 
   def tap_out(barrier)
