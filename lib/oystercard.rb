@@ -34,7 +34,8 @@ class Oystercard
     @current_journey.terminate_at(barrier)
     for_history = @current_journey
     @journey_history.record(for_history)
-    # remediate_card(@current_journey.remediation)
+    @current_journey.calc_charge
+    remediate_card(@current_journey.remediation)
   end
 
   def charge_fare(amount)
@@ -62,19 +63,24 @@ p oys = Oystercard.new
 # p oys.top_up(10)
 # p oys.balance
 
-# p dalston = Station.new
-# p dalston.zone = 1
-# p barrier1 = Barrier.new
-# p barrier2 = Barrier.new
-# p barrier1.assign_to(dalston)
-# p barrier1.station
-# p barrier1.station.zone
-# p barrier2.assign_to(dalston)
-# p oys.balance
-# p oys.tap_in(barrier1)
-# p oys.current_journey.remediation
-# p oys.tap_out(barrier2)
-# p oys.balance
+p dalston = Station.new
+p dalston.zone = 1
+p barrier1 = Barrier.new
+p barrier2 = Barrier.new
+p barrier1.assign_to(dalston)
+p barrier1.station
+p barrier1.station.zone
+p barrier2.assign_to(dalston)
+p oys.balance
+p "tap in"
+p oys.tap_in(barrier1)
+p "tap Out"
+p oys.tap_out(barrier2)
+p "current journey below"
+p oys.current_journey
+oys.current_journey.calc_charge
+p oys.current_journey.remediation
+p oys.balance
 
 # p "current journey after tap out below"
 # p oys.current_journey

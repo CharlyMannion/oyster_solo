@@ -8,8 +8,9 @@ describe Oystercard do
 
   subject(:oystercard) { described_class.new }
 
-  let(:barrier) { double :barrier }
-  let(:barrier_two) { double :barrier }
+  let(:barrier) { double :barrier, station: station_double }
+  let(:barrier_two) { double :barrier, station: station_double }
+  let(:station_double) { double :station, zone: 1 }
   let(:journey_history_double) { double :journey_history, journeys: [] }
   let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
 
