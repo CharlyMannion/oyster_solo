@@ -3,6 +3,7 @@ require 'station'
 describe Station do
   subject(:station) { described_class.new }
   let(:barrier_class_double) { double :barrier_class }
+  let(:barrier) { double :barrier }
 
   describe 'initialize' do
     it 'should have a zone' do

@@ -1,7 +1,7 @@
 require_relative 'barrier'
 require_relative 'journey_history'
 require_relative 'journey'
-
+require_relative 'station'
 
 class Oystercard
   DEFAULT_BALANCE = 10
@@ -53,8 +53,11 @@ end
 # p oys.balance
 # p oys.top_up(10)
 # p oys.balance
-# p barrier1 = Barrier.new
-# p barrier2 = Barrier.new
+p station = Station.new
+p barrier1 = Barrier.new
+p barrier2 = Barrier.new
+p station.add_barrier(barrier1)
+p station.add_barrier(barrier2)
 # p oys.in_journey
 # p oys.tap_in(barrier1)
 # p "current journey after tap in below"

@@ -9,7 +9,7 @@ class Station
     @barriers = []
   end
 
-  def add_barrier
-    @barriers << @barrier_class.new
+  def add_barrier(barrier = @barrier_class.new)
+    @barriers << barrier
   end
 end
