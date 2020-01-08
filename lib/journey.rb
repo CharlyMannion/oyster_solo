@@ -19,6 +19,10 @@ class Journey
     complete?
   end
 
+  def calc_charge
+    
+  end
+
   private
   def complete?
     if @entry_barrier != nil && @exit_barrier != nil

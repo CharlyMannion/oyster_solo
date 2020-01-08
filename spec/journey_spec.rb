@@ -48,6 +48,15 @@ describe Journey do
     expect(journey.complete).to eq(true)
   end
 
+  # describe '#calc_charge' do
+  #   it 'should calculate the cost of a joruney if travelling within the same zone' do
+  #     test_commence
+  #     test_terminate
+  #     same_zone_cost = 2
+  #     expect(journey.calc_charge).to eq(same_zone_cost)
+  #   end
+  # end
+
   private
   def test_commence
     journey.commence_at(barrier_one)
