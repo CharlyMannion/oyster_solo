@@ -12,14 +12,6 @@ describe Oystercard do
   let(:journey_history_double) { double :journey_history, journeys: [] }
   let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
 
-  def test_in
-    oystercard.tap_in(barrier)
-  end
-
-  def test_out
-    oystercard.tap_out(barrier_two)
-  end
-
   it 'should respond to balance' do
     expect(oystercard).to respond_to :balance
   end
@@ -106,6 +98,15 @@ describe Oystercard do
       test_out
       expect(oystercard.journey_history.journeys.length).to be(2)
     end
+  end
+
+  private
+  def test_in
+    oystercard.tap_in(barrier)
+  end
+
+  def test_out
+    oystercard.tap_out(barrier_two)
   end
 end
 

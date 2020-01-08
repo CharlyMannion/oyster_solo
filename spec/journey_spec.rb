@@ -18,14 +18,14 @@ describe Journey do
 
   describe '#commence_at' do
     it 'should set the entry barrier' do
-      journey.commence_at(barrier_one)
+      test_commence
       expect(journey.entry_barrier).to eq(barrier_one)
     end
   end
 
   describe '#terminate_at' do
     it 'should set the exit barrier' do
-      journey.terminate_at(barrier_two)
+      test_terminate
       expect(journey.exit_barrier).to eq(barrier_two)
     end
   end
@@ -39,5 +39,14 @@ describe Journey do
     journey.commence_at(barrier_one)
     journey.terminate_at(barrier_two)
     expect(journey.complete).to eq(true)
+  end
+
+  private
+  def test_commence
+    journey.commence_at(barrier_one)
+  end
+
+  def test_terminate
+    journey.terminate_at(barrier_two)
   end
 end
