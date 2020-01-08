@@ -1,5 +1,5 @@
 class Journey
-  attr_accessor :entry_barrier, :exit_barrier, :complete, :max_charge, :remediation
+  attr_accessor :entry_barrier, :exit_barrier, :complete, :max_charge, :actual_cost, :remediation
   MAX_CHARGE = 5
 
   def initialize(max_charge = MAX_CHARGE)
@@ -7,6 +7,7 @@ class Journey
     @exit_barrier
     @complete = complete?
     @max_charge = max_charge
+    @actual_cost
     @remediation
   end
 
@@ -20,8 +21,9 @@ class Journey
   end
 
   def calc_charge
-    return 2 if @entry_barrier.station.zone == @exit_barrier.station.zone
-    return 3
+    @actual_cost = 2 if @entry_barrier.station.zone == @exit_barrier.station.zone
+    # @actual_cost = 3 if @entry_barrier.station.zone != @exit_barrier.station.zone
+    remediate
   end
 
   private
@@ -31,6 +33,10 @@ class Journey
     else
       @complete = false
     end
+  end
+
+  def remediate
+    @remediation = @max_charge - @actual_cost
   end
 
 end

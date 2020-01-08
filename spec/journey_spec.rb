@@ -9,6 +9,10 @@ describe Journey do
   let(:journey_history_double) { double :journey_history }
   # let(:oystercard) { double :oystercard, journey_history: journey_history_double, tap_in: barrier_one, tap_out: barrier_two }
 
+  SAME_ZONE_COST = 2
+  MAX_CHARGE = 5
+  # diff_remediation = same_zone_cost - max_charge
+
   describe '#initalize' do
     it 'should have an empty entry barrier' do
       expect(journey.entry_barrier).to eq(nil)
@@ -53,8 +57,18 @@ describe Journey do
     it 'should calculate the cost of a joruney if travelling within the same zone' do
       test_commence
       test_terminate
-      same_zone_cost = 2
-      expect(journey.calc_charge).to eq(same_zone_cost)
+      journey.calc_charge
+      expect(journey.actual_cost).to eq(SAME_ZONE_COST)
+    end
+  end
+
+  describe '#remediate' do
+    it 'should refund the card based on the actual journey' do
+      test_commence
+      test_terminate
+      journey.calc_charge
+      diff = MAX_CHARGE - SAME_ZONE_COST
+      expect(journey.remediation).to eq(diff)
     end
   end
 
