@@ -3,6 +3,7 @@ require 'oystercard'
 
 describe Oystercard do
   DEFAULT_BALANCE = 10
+  MAX_CHARGE = 5
   top_up_amount = 10
 
   subject(:oystercard) { described_class.new }
@@ -20,6 +21,9 @@ describe Oystercard do
   end
   it 'should respond to journey_history' do
     expect(oystercard).to respond_to :journey_history
+  end
+  it 'should have max_charge' do
+    expect(oystercard.max_charge).to eq(MAX_CHARGE)
   end
 
   describe '#initalize' do
