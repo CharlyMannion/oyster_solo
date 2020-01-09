@@ -77,10 +77,17 @@ p oys.tap_in(barrier1)
 p "tap Out"
 p oys.tap_out(barrier2)
 p "current journey below"
-p oys.current_journey
-oys.current_journey.calc_charge
-p oys.current_journey.remediation
 p oys.balance
+
+p "second journey"
+p barrier3 = Barrier.new
+p finsbury = Station.new
+p finsbury.zone = 2
+p barrier3.assign_to(finsbury)
+p oys.balance
+p oys.tap_in(barrier1)
+# p oys.tap_out(barrier3)
+# p oys.balance
 
 # p "current journey after tap out below"
 # p oys.current_journey

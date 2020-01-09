@@ -120,7 +120,7 @@ describe Oystercard do
   end
 
   describe '#remediate_card' do
-    it 'should adjust the balance based on the remediation amount' do
+    it 'should remedate the amount for same zone journey' do
       oystercard.charge_fare(MAX_CHARGE)
       remediation = 3
       new_balance = DEFAULT_BALANCE - MAX_CHARGE + remediation

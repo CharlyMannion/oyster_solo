@@ -23,7 +23,7 @@ class Journey
 
   def calc_charge
     @actual_cost = 2 if @entry_barrier.station.zone == @exit_barrier.station.zone
-    # @actual_cost = 3 if @entry_barrier.station.zone != @exit_barrier.station.zone
+    @actual_cost = 3 if @entry_barrier.station.zone != @exit_barrier.station.zone
     remediate
   end
 

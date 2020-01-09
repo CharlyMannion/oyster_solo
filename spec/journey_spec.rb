@@ -6,10 +6,13 @@ describe Journey do
   let(:barrier_one) { double :barrier, station: station_double }
   let(:barrier_two) { double :barrier, station: station_double }
   let(:station_double) { double :station, zone: 1 }
+  let(:station_dbl_two) { double :station, zone: 2}
+  let(:barrier_three) { double :barrier, station: station_dbl_two }
   let(:journey_history_double) { double :journey_history }
   # let(:oystercard) { double :oystercard, journey_history: journey_history_double, tap_in: barrier_one, tap_out: barrier_two }
 
   SAME_ZONE_COST = 2
+  DIFF_ZONE_COST = 3
   MAX_CHARGE = 5
   # diff_remediation = same_zone_cost - max_charge
 
@@ -59,6 +62,12 @@ describe Journey do
       test_terminate
       journey.calc_charge
       expect(journey.actual_cost).to eq(SAME_ZONE_COST)
+    end
+    it 'should calculate the cost of a journey to a different zone' do
+      test_commence
+      journey.terminate_at(barrier_three)
+      journey.calc_charge
+      expect(journey.actual_cost).to eq(DIFF_ZONE_COST)
     end
   end
 
