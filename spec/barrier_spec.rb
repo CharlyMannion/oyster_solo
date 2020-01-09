@@ -14,5 +14,4 @@ describe Barrier do
       expect(barrier.station).to eq(station_double)
     end
   end
-
 end

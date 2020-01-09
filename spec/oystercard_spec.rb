@@ -1,5 +1,4 @@
 require 'oystercard'
-# require 'barrier'
 
 describe Oystercard do
   DEFAULT_BALANCE = 10
@@ -138,10 +137,3 @@ describe Oystercard do
     oystercard.tap_out(barrier_two)
   end
 end
-
-# irb
-# require './lib/oystercard.rb'
-# oys = Oystercard.new
-# oys.balance
-# oys.top_up(10)
-# oys.balance

@@ -18,7 +18,6 @@ class Journey
   def terminate_at(barrier)
     @exit_barrier = barrier
     complete?
-    # calc_charge
   end
 
   def calc_charge
@@ -39,5 +38,4 @@ class Journey
   def remediate
     @remediation = @max_charge - @actual_cost
   end
-
 end

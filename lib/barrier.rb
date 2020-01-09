@@ -8,5 +8,4 @@ class Barrier
   def assign_to(station)
     @station = station
   end
-
 end

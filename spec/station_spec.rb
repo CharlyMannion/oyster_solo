@@ -17,11 +17,4 @@ describe Station do
       expect(subject.zone).to eq(1)
     end
   end
-
-  # describe '#add_barrier' do
-  #   it 'should be possible to add barriers to the station' do
-  #     subject.add_barrier
-  #     expect(subject.barriers.first).to be_a Barrier
-  #   end
-  # end
 end
