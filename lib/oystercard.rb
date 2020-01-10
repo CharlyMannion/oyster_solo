@@ -22,6 +22,10 @@ class Oystercard
   end
 
   def tap_in(barrier)
+    if balance <= 0
+       fail "Insufficient balance"
+     end
+
     @in_journey = true
     new_journey = @journey_class.new
     new_journey.commence_at(barrier)

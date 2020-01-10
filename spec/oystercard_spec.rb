@@ -66,6 +66,11 @@ describe Oystercard do
       new_balance = DEFAULT_BALANCE - MAX_CHARGE
       expect(oystercard.balance).to eq(new_balance)
     end
+    it 'should raise an error if the balance is 0' do
+      allow(oystercard).to receive(:balance).and_return(0)
+      p oystercard.balance 
+      expect { oystercard.tap_in(barrier_two) }.to raise_error "Insufficient balance"
+    end
   end
 
   describe '#tap_out' do
