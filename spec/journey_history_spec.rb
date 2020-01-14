@@ -5,8 +5,9 @@ describe JourneyHistory do
   describe '#initialize' do
     subject(:jhist) { described_class.new }
     let(:station_double) { double :station, zone: 1, name: :dalston }
+    let(:station_double_two) { double :station, zone: 1, name: :shoreditch }
     let(:journey) { double :journey }
-    let(:barrier) { double :barrier, station: station_double }
+    let(:barrier) { double :barrier, station: station_double_two }
     let(:barrier_two) { double :barrier, station: station_double }
     let(:journey_double) { double :journey, entry_barrier: barrier, exit_barrier: barrier_two, complete: true }
     let(:journey_double_two) { double :journey, entry_barrier: barrier_two, exit_barrier: barrier, complete: true }
@@ -25,6 +26,7 @@ describe JourneyHistory do
       jhist.record(journey_double_two)
       p "accessing the station below"
       p jhist.journeys[0].entry_barrier.station.name
+      p jhist.journeys[0].exit_barrier.station.name
       expect(jhist.display).to eq('test')
     end
   end
