@@ -19,6 +19,7 @@ p oys = Oystercard.new
 
 p dalston = Station.new
 p dalston.zone = 1
+p dalston.name = :dalston
 p barrier1 = Barrier.new
 p barrier2 = Barrier.new
 p barrier1.assign_to(dalston)
@@ -35,7 +36,7 @@ p oys.balance
 p "journey history below, first"
 p oys.journey_history
 p "first journey below"
-p oys.journey_history.journeys[0].entry_barrier.station
+p oys.journey_history.journeys[0].entry_barrier.station.name
 
 # p "second journey"
 # p barrier3 = Barrier.new
