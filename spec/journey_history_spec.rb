@@ -4,12 +4,12 @@ describe JourneyHistory do
 
   describe '#initialize' do
     subject(:jhist) { described_class.new }
+    let(:station_double) { double :station, zone: 1, name: :dalston }
     let(:journey) { double :journey }
     let(:barrier) { double :barrier, station: station_double }
     let(:barrier_two) { double :barrier, station: station_double }
-    let(:station_double) { double :station, zone: 1, name: :dalston }
-    let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
-    let(:journey_double_two) { double :journey, entry_barrier: :barrier_two, exit_barrier: :barrier, complete: true }
+    let(:journey_double) { double :journey, entry_barrier: barrier, exit_barrier: barrier_two, complete: true }
+    let(:journey_double_two) { double :journey, entry_barrier: barrier_two, exit_barrier: barrier, complete: true }
 
     it 'should be empty of journeys when created' do
       expect(jhist.journeys).to eq([])
@@ -21,10 +21,10 @@ describe JourneyHistory do
     end
 
     it 'should have a function to display the journey history to user' do
-      jhist.record(journey_double_two)
       jhist.record(journey_double)
+      jhist.record(journey_double_two)
       p "accessing the station below"
-      p journey_double.entry_barrier.name
+      p jhist.journeys[0].entry_barrier.station.name
       expect(jhist.display).to eq('test')
     end
   end
