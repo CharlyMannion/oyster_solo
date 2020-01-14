@@ -17,4 +17,11 @@ describe Station do
       expect(subject.zone).to eq(1)
     end
   end
+
+  describe '#name' do
+    it 'should be given a name' do
+      subject.name = :dalston
+      expect(subject.name).to eq(:dalston)
+    end
+  end
 end

@@ -1,7 +1,7 @@
 require_relative 'barrier'
 
 class Station
-  attr_accessor :zone, :barriers
+  attr_accessor :zone, :barriers, :name
 
   def initialize
     @zone
