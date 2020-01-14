@@ -24,10 +24,9 @@ describe JourneyHistory do
     it 'should have a function to display the journey history to user' do
       jhist.record(journey_double)
       jhist.record(journey_double_two)
-      p "accessing the station below"
-      p jhist.journeys[0].entry_barrier.station.name
-      p jhist.journeys[0].exit_barrier.station.name
-      expect(jhist.display).to eq('test')
+      # test = "Journey History: #{jhist.journeys[0].entry_barrier.station.name} - #{jhist.journeys[0].exit_barrier.station.name}; #{jhist.journeys[1].entry_barrier.station.name} - #{jhist.journeys[1].exit_barrier.station.name}"
+      test_eq = "Journey History: shoreditch - dalston; dalston - shoreditch"
+      expect(jhist.display).to eq(test_eq)
     end
   end
 end
