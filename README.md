@@ -58,7 +58,7 @@ Getting Started
 ---------
 * Fork this repo
 * Clone to your local machine
-`git clone https://github.com/CharlyMannion/airport_solo`
+`git clone https://github.com/CharlyMannion/oyster_solo`
 * Run the command gem install bundle (if you don't have bundle already)
 * When the installation completes, run bundle
 * Run the command gem install bundle (if you don't have bundle already)
