@@ -45,6 +45,9 @@ describe Oystercard do
       oystercard.top_up(top_up_amount)
       expect(oystercard.balance).to eq(new_balance)
     end
+    it 'should raise an error if you attempt to top up too much' do
+      expect { oystercard.top_up(1000) }.to raise_error "Max top up is £50"
+    end
   end
 
   describe '#tap_in' do
