@@ -76,7 +76,6 @@ How I approached this challenge
 * I followed a TDD approach to this challenge
 * I followed the Single Responsibility principle, and created separate classes and test suites
 * I used mocks in my tests to override the random behaviour to ensure consistent test behaviour
-* I ran rubocop regularly to help me improve my code.
 * I wrote code to defend against edge cases
 * I achieved 100% Test coverage
 * I refactored my code after implementing new features to follow principles such as DRY
