@@ -6,6 +6,7 @@ require_relative 'station'
 class Oystercard
   DEFAULT_BALANCE = 10
   MAX_CHARGE = 5
+  MAX_TOP_UP = 50
 
   attr_accessor :balance, :in_journey, :journey_history, :current_journey, :max_charge
 
@@ -18,7 +19,7 @@ class Oystercard
   end
 
   def top_up(amount)
-    fail "Max top up is £50" if amount > 50 
+    fail "Max top up is £50" if amount > MAX_TOP_UP
     @balance += amount
   end
 
