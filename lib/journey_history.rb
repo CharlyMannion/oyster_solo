@@ -3,6 +3,8 @@ class JourneyHistory
 
   def initialize
     @journeys = []
+    @to_display = "Journey History: "
+
   end
 
   def record(journey)
@@ -10,10 +12,9 @@ class JourneyHistory
   end
 
   def display
-    # test = "Journey History: #{jhist.journeys[0].entry_barrier.station.name} - #{jhist.journeys[0].exit_barrier.station.name}; #{jhist.journeys[1].entry_barrier.station.name} - #{jhist.journeys[1].exit_barrier.station.name}"
-    # "Journey History: #{@journeys[0].entry_barrier.station.name} - #{@journeys[0].exit_barrier.station.name}; #{@journeys[1].entry_barrier.station.name} - #{@journeys[1].exit_barrier.station.name}"
     @journeys.each { |journey|
-      p "#{journey.entry_barrier.station.name} - #{journey.exit_barrier.station.name};"
+      @to_display << "#{journey.entry_barrier.station.name} - #{journey.exit_barrier.station.name}; "
      }
+     @to_display.delete_suffix('; ')
   end
 end
