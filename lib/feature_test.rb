@@ -49,6 +49,7 @@ p oys.tap_out(barrier3)
 p oys.balance
 p "journey history below, second"
 p oys.journey_history.display
+# p oys.view_history
 
 # p "current journey after tap out below"
 # p oys.current_journey

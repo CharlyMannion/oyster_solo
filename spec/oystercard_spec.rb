@@ -9,7 +9,7 @@ describe Oystercard do
 
   let(:barrier) { double :barrier, station: station_double }
   let(:barrier_two) { double :barrier, station: station_double }
-  let(:station_double) { double :station, zone: 1 }
+  let(:station_double) { double :station, zone: 1, name: :dalston }
   let(:journey_history_double) { double :journey_history, journeys: [] }
   let(:journey_double) { double :journey, entry_barrier: :barrier, exit_barrier: :barrier_two, complete: true }
 
@@ -68,7 +68,7 @@ describe Oystercard do
     end
     it 'should raise an error if the balance is 0' do
       allow(oystercard).to receive(:balance).and_return(0)
-      p oystercard.balance 
+      p oystercard.balance
       expect { oystercard.tap_in(barrier_two) }.to raise_error "Insufficient balance"
     end
   end
@@ -130,6 +130,15 @@ describe Oystercard do
       new_balance = DEFAULT_BALANCE - MAX_CHARGE + remediation
       oystercard.remediate_card(remediation)
       expect(oystercard.balance).to eq(new_balance)
+    end
+  end
+
+  describe '#view_history' do
+    it 'should show the journey history' do
+      test_in
+      test_out
+      test_history = "Journey History: dalston - dalston"
+      expect(oystercard.view_history).to eq(test_history)
     end
   end
 

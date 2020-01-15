@@ -49,4 +49,8 @@ class Oystercard
   def remediate_card(amount)
     @balance += amount
   end
+
+  def view_history
+    @journey_history.display
+  end
 end
