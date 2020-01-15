@@ -79,4 +79,4 @@ How I approached this challenge
 * I ran rubocop regularly to help me improve my code.
 * I wrote code to defend against edge cases
 * I achieved 100% Test coverage
-* When I was happy with the program at a particular point, I attempted to refactor to follow principles such as DRY
+* I refactored my code after implementing new features to follow principles such as DRY
