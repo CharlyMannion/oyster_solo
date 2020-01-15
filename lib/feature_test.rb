@@ -35,20 +35,20 @@ p "current journey below"
 p oys.balance
 p "journey history below, first"
 p oys.journey_history
-p "first journey below"
-p oys.journey_history.journeys[0].entry_barrier.station.name
+p oys.journey_history.display
 
-# p "second journey"
-# p barrier3 = Barrier.new
-# p finsbury = Station.new
-# p finsbury.zone = 2
-# p barrier3.assign_to(finsbury)
-# p oys.balance
-# p oys.tap_in(barrier1)
-# p oys.tap_out(barrier3)
-# p oys.balance
-# p "journey history below, second"
-# p oys.journey_history
+p "second journey"
+p barrier3 = Barrier.new
+p finsbury = Station.new
+p finsbury.zone = 2
+p finsbury.name = :finsbury
+p barrier3.assign_to(finsbury)
+p oys.balance
+p oys.tap_in(barrier1)
+p oys.tap_out(barrier3)
+p oys.balance
+p "journey history below, second"
+p oys.journey_history.display
 
 # p "current journey after tap out below"
 # p oys.current_journey
